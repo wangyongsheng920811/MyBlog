@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ page_title }}—不见长安的博客{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/category_page.css') }}">
+{% endblock %}
+
+{% block mainbody %}
+    <div id="mainbody">
+    <div class="article-list">
+        {% for article in articles %}
+                <div class="blog-article">
+                    <div class="article-title">
+
+                        <ul class="info-ul">
+                            <li class="title"><a href="">{{ article.title }}</a></li>
+
+                            <li class="create-time">{{ article.create_time }}</li>
+                            <li class="click-number">1000</li>
+                        </ul>
+                    </div>
+                    <div id="article-content" class="article-content">{{ article.content|safe }}</div>
+
+                </div>
+            {% endfor %}
+    </div>
+    </div>
+{% endblock %}

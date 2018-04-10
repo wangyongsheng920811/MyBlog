@@ -1,0 +1,143 @@
+#write_article{
+    width: 60%;
+    height: 600px;
+    /*background-color: #222222;*/
+    /*opacity: 0.6;*/
+    /*border: 1px solid red;*/
+    margin: 100px auto;
+    position:fixed;
+}
+
+form{
+    /*margin-top: 30px;*/
+}
+
+.title{
+    /*margin:20px 0;*/
+    /*opacity: 0.5;*/
+    /*border: 1px solid yellow;*/
+}
+
+.input{
+    /*position: relative;*/
+    width: 88%;
+    float: right;
+    /*margin-left: 10px;*/
+    /*border: 1px solid red;*/
+}
+
+.title input{
+    text-align: center;
+    border: 0px;
+    background-color: rgba(0,0,0,0.6);
+    color: #a6a6a6;
+    /*opacity: 0.6;*/
+    height: 60px;
+    width: 100%;
+    font: 20px "宋体", "Arial Narrow", HELVETICA;
+    font-weight: bolder ;
+    float: right;
+    margin-bottom: 20px;
+    margin-bottom: 40px;
+
+}
+
+
+/* start select*/
+.select{
+    /*border: 1px solid yellow;*/
+    width: 12%;
+    /*position: relative;*/
+    float: left;
+}
+select{
+    width: auto;
+    height: 60px;
+    /*margin-right: 8px;*/
+    margin: 0;
+    background-color: rgba(0,0,0,0.6);
+    border: none;
+    color: #a6a6a6;
+    /*box-sizing: border-box;*/
+    font-size: 20px;
+    padding: 0 2%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    /*outline: none;*/
+    /*text-transform: none;*/
+    font-family: inherit;
+    line-height: inherit;
+
+}
+
+.option{
+    text-align: center;
+    background-color: #333333;
+    color: #a6a6a6;
+}
+/*end select*/
+
+.content{
+    clear: both;
+    /*margin-top: 200px;*/
+    /*border: 1px solid yellow;*/
+    /*height: 1000px;*/
+}
+
+textarea{
+    resize: none;
+
+    border: 0px;
+    background-color : rgba(0,0,0,0.6);
+    color: #a6a6a6;
+    /*opacity: 0.6;*/
+    width: 100%;
+    font-family: 新宋体;
+    font-size: 20px;
+    overflow-y: auto;
+    /*font: 20px "宋体", "Arial Narrow", HELVETICA;*/
+    scrollbar-highlight-color : red;
+
+}
+
+#editable{
+    height: 600px;
+    background-color: rgba(0,0,0,0.6);
+    border: none;
+    color: #a6a6a6;
+    font-family: 新宋体;
+    font-size: 20px;
+    overflow-y: auto;
+    /*border: 1px solid red;*/
+}
+
+#submit{
+    margin-top: 20px;
+    /*border: 1px solid red;*/
+}
+
+.btn-submit{
+    background-color: rgba(0,0,0,0.6);
+    color: #a6a6a6;
+    font-family: 新宋体;
+    font-size: 20px;
+    font-weight: bolder;
+    border: none;
+    padding: 10px 10px;
+    display: block;
+    float: right;
+    box-shadow: 0px 1px 0px rgba(255,255,255,.1), inset 0px 1px 1px rgba(0,0,0,.7);
+    border-radius: 6px;
+}
+
+.btn-submit:hover{
+    background-color: #E72B2B;
+
+}
+
+[contentEditable=true]:empty:not(:focus):before{
+    content:attr(data-text)
+}

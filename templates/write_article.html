@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}写文章{% endblock %}
+
+{% block head %}
+    <link href="{{ url_for('static', filename='css/write_article.css') }}" rel="stylesheet">
+    <script type="text/javascript" src="../static/ckeditor/ckeditor.js"></script>
+{#    <script src="//cdn.ckeditor.com/4.4.6/standard/ckeditor.js"></script>#}
+{#    <script type="text/javascript" src="{{ url_for('static', filename='test.js') }}"></script>#}
+{% endblock %}
+
+{% block mainbody %}
+    <div id="write_article">
+        <form action="{{ url_for('write') }}" method="post">
+            <div class="title">
+               <div class="select">
+                    <select name='select'>
+
+                        <option class="option" value='Python'>Python</option>
+                      <option class="option" value='Linux'>Linux</option>
+                      <option class="option" value='Windows' >Windows</option>
+                      <option class="option" value='前端'>前端</option>
+                      <option class="option" value='持续集成'>持续集成</option>
+                      <option class="option" value='其他'>其他</option>
+
+                    </select>
+               </div>
+                <div class="input">
+                    <input type="text" placeholder="请输入标题" name="title">
+                </div>
+            </div>
+            <textarea name="textarea" id="textarea" style="display: none"></textarea>
+            <div class="content">
+                <div id="editable" name="contents" contenteditable="true">
+                </div>
+
+            </div>
+
+            <div id="submit">
+                <button class="btn-submit" onclick="_submits()">立即发表</button>
+            </div>
+            <script>
+
+            function _submits()
+            {
+                var1 = $("#editable").html()
+                $("#textarea").val(var1);
+            }
+
+        </script>
+        </form>
+    </div>
+{% endblock %}

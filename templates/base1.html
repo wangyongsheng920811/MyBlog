@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{% block title %}{% endblock %}</title>
+<meta name="keywords" content="黑色模板,个人网站模板,个人博客模板,博客模板,css3,html5,网站模板" />
+<meta name="description" content="这是一个有关黑色时间轴的css3 html5 网站模板" />
+    <link rel="stylesheet" href="../static/css/styles1.css">
+<link href="{{ url_for('static', filename='css/animation.css') }}" rel="stylesheet">
+<!-- 返回顶部调用 begin -->
+<link href="{{ url_for('static', filename='css/lrtk.css') }}" rel="stylesheet" />
+<script type="text/javascript" src="../static/js/jquery.js"></script>
+<script type="text/javascript" src="../static/js/js.js"></script>
+<!-- 返回顶部调用 end-->
+<!--[if lt IE 9]>
+<script src="../static/js/modernizr.js"></script>
+<![endif]-->
+{% block head %}{% endblock %}
+</head>
+<body>
+<header></header>
+<div id="main">
+<div class="header">
+  <nav id="nav">
+    <ul>
+      <li><a href="/" >首页</a></li>
+      <li><a href="/download/" target="_blank" title="Python">Python</a></li>
+      <li><a href="/book/" target="_blank" title="Linux">Linux</a></li>
+      <li><a href="/web/" target="_blank" title="Windows">Windows</a></li>
+      <li><a href="/newshtml5/" target="_blank" title="前端">前端</a></li>
+      <li><a href="/jstt/" target="_blank" title="持续集成">持续集成</a></li>
+      <li><a href="/jstt/" target="_blank" title="其他">其他</a></li>
+      <li><a href="{{ url_for('login') }}"  title="登陆" >登陆</a></li>
+{#      <li><a href="{{ url_for('regist') }}"  title="注册">注册</a></li>#}
+    </ul>
+    <script src="../static/js/silder.js"></script><!--获取当前页导航 高亮显示标题-->
+  </nav>
+</div>
+<!--header end-->
+{% block mainbody %}
+
+{% endblock %}
+<!-- jQuery仿腾讯回顶部和建议 代码开始 -->
+
+<div id="tbox"> <a id="togbook" href="/e/tool/gbook/?bid=1"></a> <a id="gotop" href="javascript:void(0)"></a> </div>
+<!-- 代码结束 -->
+</div>
+</body>
+</html>

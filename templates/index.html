@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% block title %}首页{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+
+{% endblock %}
+{% block mainbody %}
+
+<div id="mainbody">
+
+  <div class="article-list">
+
+        <div class="blog-left">
+            {% for article in articles %}
+                <div class="blog-article">
+                    <div class="article-title">
+
+                        <ul class="info-ul">
+                            <li class="title"><a href="">{{ article.title }}</a></li>
+
+                            <li class="create-time">{{ article.create_time }}</li>
+                            <li class="click-number">1000</li>
+                        </ul>
+                    </div>
+                    <div id="article-content" class="article-content">{{ article.content|safe }}</div>
+
+                </div>
+            {% endfor %}
+
+
+        </div>
+
+        <div class="blog-right">
+            <div class="article-search">
+                <form class="article-search-form" method="get" action="#">
+                    <input type="text" name="s" value="Search" onfocus="this.value=''" onblur="this.value='Search'">
+                    <button class="search-btn">搜索</button>
+                </form>
+            </div>
+            <div class="article-rank">
+                <ol>
+                    <p>点击排行</p>
+                    <li class="rank-li"><span><strong>1</strong></span><a href="">11111111111111111111111111111111111111111111111111111111</a></li>
+                    <li class="rank-li"><span><strong>2</strong></span><a href="">222222222</a></li>
+                    <li class="rank-li"><span><strong>3</strong></span><a href="">333333333</a></li>
+                    <li class="rank-li"><span><strong>4</strong></span><a href="">44444444</a></li>
+                    <li class="rank-li"><span><strong>5</strong></span><a href="">5555555</a></li>
+                    <li class="rank-li"><span><strong>6</strong></span><a href="">666666666</a></li>
+                    <li class="rank-li"><span><strong>7</strong></span><a href="">7777777777</a></li>
+                    <li class="rank-li"><span><strong>8</strong></span><a href="">888888888888</a></li>
+                    <li class="rank-li"><span><strong>9</strong></span><a href="">999999999</a></li>
+
+                </ol>
+            </div>
+
+            <div class="about-me">
+                <h1>关于我</h1>
+                <p>网名：DanceSmile | 即步非烟</p>
+                <p>职业：Web前端设计师、网页设计</p>
+                <p>电话：13662012345</p>
+                <p>Email：dancesmiling@qq.com</p>
+{#                  <audio src="../static/musics/DJ%20Okawari%20-%20Flower%20Dance.mp3" autoplay="autoplay"></audio>#}
+                <ul class="info-li">
+                  <li><a href="/" class="talk" title="给我留言"></a></li>
+                  <li><a href="/" class="address" title="联系地址"></a></li>
+                  <li><a href="/" class="email" title="给我写信"></a></li>
+                  <li><a href="/" class="photos" title="生活照片"></a></li>
+                  <li><a href="/" class="heart" title="关注我"></a></li>
+                </ul>
+            </div>
+{#            <div class="article-message"></div>#}
+        </div>
+  </div>
+{#        {% for article in articles %}#}
+{#            <li>#}
+{#                <div class="arrow_box">#}
+{##}
+{#                     <h2 class="title"><a href="/" target="_blank">{{ article.title }}</a></h2>#}
+{#                    <ul class="textinfo">#}
+{#                        <a href="/"><img src="images/s1.jpg"></a>#}
+{#                      <p> {{ article.content|safe }}</p>#}
+{#                    </ul>#}
+{#                    <ul class="details">#}
+{#                        <li class="likes"><a href="#">10</a></li>#}
+{#                        <li class="comments"><a href="#">{{ article.category }}</a></li>#}
+{#                        <li class="icon-time"><a href="#">{{ article.create_time }}</a></li>#}
+{#                    </ul>#}
+{#                </div>#}
+{#        <!--arrow_box end-->#}
+{#             </li>#}
+{#        {% endfor %}#}
+
+
+
+</div>>
+{% endblock %}
