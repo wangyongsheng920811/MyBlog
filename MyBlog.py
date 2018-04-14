@@ -10,6 +10,8 @@ from flask import request
 from flask import make_response
 from models import User
 from models import Article
+from models import Comment
+
 import os
 import datetime
 import random
@@ -30,15 +32,16 @@ def login_required(func):
     return wrapper
 
 
-def get_article(articles, tag):
+def get_article(articles, tag, articles_range={}):
     page_title = tag
-    if tag != 'index':
+    if tag != 'index' and tag != 'details':
         tag = 'category_page'
     page_name = tag + '.html'
+    print(page_name)
     if session.get('user_id') == 1:
-        return render_template(page_name, id=1, page_title=page_title, **articles)
+        return render_template(page_name, id=1, page_title=page_title, **articles, **articles_range)
     else:
-        return render_template(page_name, page_title=page_title, **articles)
+        return render_template(page_name, page_title=page_title, **articles, **articles_range)
 
 
 @app.route('/')
@@ -46,7 +49,10 @@ def index():
     articles = {
         'articles': Article.query.order_by('-create_time').all()
     }
-    return get_article(articles, tag='index')
+    articles_range = {
+        'articles_range': Article.query.order_by('-click_number').limit(10).all()
+    }
+    return get_article(articles, 'index', articles_range)
 
 
 @app.route('/<tag>/')
@@ -108,7 +114,7 @@ def regist():
 @login_required
 def write():
     if request.method == 'GET':
-        return render_template('write_article.html')
+        return render_template('write_article.html', id=1)
     else:
         print(request.form)
         category = request.form.get('select')
@@ -116,7 +122,7 @@ def write():
         contents = request.form.get('textarea')
         user_id = session.get('user_id')
         user = User.query.filter(User.id == user_id).first()
-        article = Article(category=category, title=title, content=contents, author_id=user_id, author=user)
+        article = Article(category=category, title=title, click_number=1, content=contents, author_id=user_id, author=user)
         db.session.add(article)
         db.session.commit()
         return redirect(url_for('index'))
@@ -174,6 +180,28 @@ def ckupload():
     response = make_response(res)
     response.headers["Content-Type"] = "text/html"
     return response
+
+
+@app.route('/details/<article_id>/', methods=['GET', 'POST'])
+def details(article_id):
+    article = Article.query.filter(Article.id == article_id).first()
+    article.click_number = article.click_number + 1
+    db.session.commit()
+
+    if request.method == 'POST':
+        content = request.form.get('comment')
+        # print(content)
+        comment = Comment(content=content, article_id=article.id, article=article)
+        db.session.add(comment)
+        db.session.commit()
+        # return redirect(url_for('index'))
+    comment_list = Comment.query.filter(Comment.article == article).order_by('-create_time').all()
+    articles = {
+        'articles': article,
+        'comments': comment_list
+    }
+    print(articles)
+    return get_article(articles, tag='details')
 
 
 if __name__ == '__main__':

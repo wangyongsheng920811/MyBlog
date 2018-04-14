@@ -14,10 +14,10 @@
                     <div class="article-title">
 
                         <ul class="info-ul">
-                            <li class="title"><a href="">{{ article.title }}</a></li>
+                            <li class="title"><a href="{{ url_for('details',article_id=article.id) }}">{{ article.title }}</a></li>
 
                             <li class="create-time">{{ article.create_time }}</li>
-                            <li class="click-number">1000</li>
+                            <li class="click-number">{{ article.click_number }}</li>
                         </ul>
                     </div>
                     <div id="article-content" class="article-content">{{ article.content|safe }}</div>

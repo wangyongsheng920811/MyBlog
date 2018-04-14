@@ -11,6 +11,9 @@ from MyBlog import app
 from exts import db
 from models import User
 from models import Article
+from models import Comment
+
+
 
 # 数据库迁移顺序：模型-》迁移文件-》表
 # 命令行:

@@ -16,10 +16,10 @@
                     <div class="article-title">
 
                         <ul class="info-ul">
-                            <li class="title"><a href="">{{ article.title }}</a></li>
+                            <li class="title"><a href="{{ url_for('details', article_id=article.id) }}">{{ article.title }}</a></li>
 
                             <li class="create-time">{{ article.create_time }}</li>
-                            <li class="click-number">1000</li>
+                            <li class="click-number">{{ article.click_number }}</li>
                         </ul>
                     </div>
                     <div id="article-content" class="article-content">{{ article.content|safe }}</div>
@@ -40,15 +40,19 @@
             <div class="article-rank">
                 <ol>
                     <p>点击排行</p>
-                    <li class="rank-li"><span><strong>1</strong></span><a href="">11111111111111111111111111111111111111111111111111111111</a></li>
-                    <li class="rank-li"><span><strong>2</strong></span><a href="">222222222</a></li>
-                    <li class="rank-li"><span><strong>3</strong></span><a href="">333333333</a></li>
-                    <li class="rank-li"><span><strong>4</strong></span><a href="">44444444</a></li>
-                    <li class="rank-li"><span><strong>5</strong></span><a href="">5555555</a></li>
-                    <li class="rank-li"><span><strong>6</strong></span><a href="">666666666</a></li>
-                    <li class="rank-li"><span><strong>7</strong></span><a href="">7777777777</a></li>
-                    <li class="rank-li"><span><strong>8</strong></span><a href="">888888888888</a></li>
-                    <li class="rank-li"><span><strong>9</strong></span><a href="">999999999</a></li>
+                    {% for article_range in articles_range %}
+                        <li class="rank-li"><span><strong>{{ 1+articles_range.index(article_range) }}</strong></span><a href="{{ url_for('details', article_id=article_range.id) }}">{{ article_range.title }}</a></li>
+
+                    {% endfor %}
+
+{#                    <li class="rank-li"><span><strong>2</strong></span><a href="">222222222</a></li>#}
+{#                    <li class="rank-li"><span><strong>3</strong></span><a href="">333333333</a></li>#}
+{#                    <li class="rank-li"><span><strong>4</strong></span><a href="">44444444</a></li>#}
+{#                    <li class="rank-li"><span><strong>5</strong></span><a href="">5555555</a></li>#}
+{#                    <li class="rank-li"><span><strong>6</strong></span><a href="">666666666</a></li>#}
+{#                    <li class="rank-li"><span><strong>7</strong></span><a href="">7777777777</a></li>#}
+{#                    <li class="rank-li"><span><strong>8</strong></span><a href="">888888888888</a></li>#}
+{#                    <li class="rank-li"><span><strong>9</strong></span><a href="">999999999</a></li>#}
 
                 </ol>
             </div>

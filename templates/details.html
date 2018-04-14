@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ articles.title }}{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/details.css') }}">
+
+{% endblock %}
+
+{% block mainbody %}
+    <script>
+        var As=document.getElementById('header').getElementsByTagName('a');
+        for(i=1;i<As.length;i++){if(As[i].innerHTML=='{{ articles.category }}'){As[i].id='nav_current'}}
+    </script>
+    <div id="mainbody">
+        <div class="details">
+            <div class="blog-article">
+                    <div class="article-title">
+
+                        <ul class="info-ul">
+                            <li class="title">{{ articles.title }}</li>
+
+                            <li class="create-time">{{ articles.create_time }}</li>
+                            <li class="click-number">{{ articles.click_number }}</li>
+                        </ul>
+                    </div>
+                    <div id="article-content" class="article-content">{{ articles.content|safe }}</div>
+            </div>
+            <div class="comment">
+                <form action="{{ url_for('details', article_id=articles.id) }}" class="article-comment" method="post">
+                <textarea name="comment" id="" cols="30" rows="6" placeholder="输入评论内容"></textarea>
+                <button class="btn-submit">发表评论</button>
+                </form>
+            </div>
+
+            {% for comment in comments %}
+                <ul class="comment-ul">
+                <li class="comments"><h1>{{ comment.content }}</h1></li>
+                <li class="comment2comment"><a href="">回复</a></li>
+                </ul>
+            {% endfor %}
+
+        </div>
+    </div>
+
+{% endblock %}
